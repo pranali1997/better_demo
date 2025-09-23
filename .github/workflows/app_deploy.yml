@@ -36,3 +36,13 @@ jobs:
         run: |
               kubectl get nodes
               minikube status
+
+      - name : deploy Kubernetes deployment and service
+        run: |
+              cd app
+              kubectl apply -f deployment.yml
+              kubectl apply -f service.yml
+
+      - name : get kubernets services
+        run: |
+              kubectl get svc/better-demo-service
