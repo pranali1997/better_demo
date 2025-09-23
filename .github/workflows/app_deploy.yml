@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Set Image Tag
-        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-4)" >> $GITHUB_ENV
 
       - name: Build and Push Docker Image
         run: |
@@ -40,13 +40,13 @@ jobs:
       - name : deploy Kubernetes deployment and service
         run: |
               cd app
-              kubectl apply -f deployment.yml
+              kubectl apply -f deployment.yml --image pranalisolaskar/better_demo:$IMAGE_TAG
               kubectl apply -f service.yml
 
       - name : get kubernets services
         run: |
               kubectl get svc/better-demo-service
               sleep 30
-              kubectl port-forward svc/better-demo-service 3001:80 >pf.log 2>&1 & PF_PID=$!
+              kubectl port-forward svc/better-demo-service 30003:80 >pf.log 2>&1 & PF_PID=$!
               sleep 10
-              curl -v http://localhost:30001
+              curl -v http://localhost:30003

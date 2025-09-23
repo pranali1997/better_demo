@@ -15,7 +15,7 @@ spec:
         app: better-demo
     spec:
       containers:
-      - name: nodejs-container
+      - name: better-container
         image: pranalisolaskar/better_demo:b5c19a1
         ports:
         - containerPort: 3000 
