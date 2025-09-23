@@ -24,5 +24,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
+          cd app/
           docker build -t pranalisolaskar/better_demo:$IMAGE_TAG .
           docker push pranalisolaskar/better_demo:$IMAGE_TAG
