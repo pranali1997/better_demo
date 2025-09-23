@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: pranalisolaskar/better_demo:3f683de
+        image: pranalisolaskar/better_demo:b5c19a1
         ports:
         - containerPort: 3000 
