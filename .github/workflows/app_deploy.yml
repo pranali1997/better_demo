@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Better CI/CD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-push:
+  build-push-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,3 +46,7 @@ jobs:
       - name : get kubernets services
         run: |
               kubectl get svc/better-demo-service
+              sleep 30
+              kubectl port-forward svc/better-demo-service 3001:80 >pf.log 2>&1 & PF_PID=$!
+              sleep 10
+              curl -v http://localhost:30001
