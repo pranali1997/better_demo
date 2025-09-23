@@ -40,7 +40,7 @@ jobs:
       - name : deploy Kubernetes deployment and service
         run: |
               cd app
-              kubectl apply -f deployment.yml --image pranalisolaskar/better_demo:$IMAGE_TAG
+              kubectl create deployment deployment.yml --image pranalisolaskar/better_demo:$IMAGE_TAG
               kubectl apply -f service.yml
 
       - name : get kubernets services
