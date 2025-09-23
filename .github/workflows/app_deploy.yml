@@ -18,10 +18,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set Image Tag
+        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
       - name: Build and Push Docker Image
-        uses: docker/build-push-action@v6
-        with:
-          context: ./app
-          file: ./app/Dockerfile
-          push: true
-          tags: ${{ env.IMAGE_NAME }}:v1
+        run: |
+          docker build -t pranalisolaskar/better_demo:$IMAGE_TAG .
+          docker push pranalisolaskar/better_demo:$IMAGE_TAG
