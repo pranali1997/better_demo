@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run the application when the container starts
-CMD ["node", "server.js"]
+CMD ["node", "src/index.ts"]
