@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: better-demo-deployment
+  labels:
+    app: better-demo
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: better-demo
+  template:
+    metadata:
+      labels:
+        app: better-demo
+    spec:
+      containers:
+      - name: nodejs-container
+        image: pranalisolaskar/better_demo:3f683de
+        ports:
+        - containerPort: 3000 

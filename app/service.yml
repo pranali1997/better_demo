@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: better-demo-service
+spec:
+  selector:
+    app: better-demo # Matches the labels in your Deployment
+  ports:
+    - protocol: TCP
+      port: 80 # The port the service will listen on
+      targetPort: 3000 # The port on the pod to forward traffic to
+  type: ClusterIP # Or ClusterIP, NodePort depending on your exposure needs
