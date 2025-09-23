@@ -5,8 +5,9 @@ metadata:
 spec:
   selector:
     app: better-demo 
+  type: NodePort 
   ports:
     - protocol: TCP
       port: 80 
-      targetPort: 3000
-  type: NodePort 
+      targetPort: 30000
+      nodePort: 30001
