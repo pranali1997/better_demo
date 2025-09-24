@@ -48,5 +48,6 @@ jobs:
               kubectl get svc/better-demo-service
               sleep 30
               kubectl port-forward svc/better-demo-service 30003:80 >pf.log 2>&1 & PF_PID=$!
+              kubectl get pods 
               sleep 10
               curl -v http://localhost:30003
