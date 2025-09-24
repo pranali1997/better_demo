@@ -46,6 +46,7 @@ jobs:
       - name : get kubernets services
         run: |
               kubectl get svc/better-demo-service
+              kubectl delete service --all
               sleep 30
               kubectl port-forward svc/better-demo-service 30002:80 >pf.log 2>&1 & PF_PID=$!
               kubectl get pods 
